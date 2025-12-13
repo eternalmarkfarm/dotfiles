@@ -36,6 +36,16 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
+# Режим вкладок (Tabbed)
+bindsym $mod+w layout tabbed
+
+# Режим стопки (Stacked)
+bindsym $mod+s layout stacked
+
+# Вернуться к обычному плиточному режиму (Splitting)
+bindsym $mod+e layout toggle split
+
+
 # Переместить окно
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
@@ -150,6 +160,3 @@ exec --no-startup-id pulseaudio --start
 exec --no-startup-id xrdb ~/.Xresources
 
 
-# Start Gnome Keyring daemon (needed for secretservice/GCM)
-exec --no-startup-id /usr/bin/gnome-keyring-daemon --daemonize --login
-exec --no-startup-id gnome-keyring-daemon --start --components=secrets
