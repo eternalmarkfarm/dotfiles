@@ -159,4 +159,8 @@ exec_always --no-startup-id copyq
 exec --no-startup-id pulseaudio --start
 exec --no-startup-id xrdb ~/.Xresources
 
+# Переместить текущий workspace на монитор справа
+bindsym $mod+Ctrl+Right move workspace to output right
 
+# Переместить текущий workspace на монитор слева
+bindsym $mod+Ctrl+Left move workspace to output left
