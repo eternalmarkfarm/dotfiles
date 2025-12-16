@@ -118,3 +118,6 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 export PATH="$HOME/.local/bin:$PATH"
+
+export GOOGLE_CLOUD_PROJECT="dogwood-reserve-466914-a3"
+
