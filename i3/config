@@ -25,10 +25,10 @@ bindsym $mod+d exec dmenu_run
 bindsym $mod+Shift+q kill
 
 # Изменить фокус окон
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # Переместить фокус между рабочими столами
 bindsym $mod+Left focus left
@@ -47,13 +47,13 @@ bindsym $mod+e layout toggle split
 
 
 # Переместить окно
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # Разделить окно по горизонтали
-bindsym $mod+h split h
+bindsym $mod+semicolon split h
 
 # Разделить окно по вертикали
 bindsym $mod+v split v
@@ -69,6 +69,13 @@ bindsym $mod+space focus mode_toggle
 
 # Изменить фокус на родительский контейнер
 bindsym $mod+a focus parent
+
+bindsym $mod+Shift+m mark mychrome
+# Win+m — пометить текущее окно меткой "mychrome"
+
+bindsym $mod+m [con_mark="mychrome"] focus
+# Win+Shift+m — найти окно с меткой "mychrome" и сфокусировать его
+
 
 # Рабочие столы:
 # Переключение на рабочий стол N
