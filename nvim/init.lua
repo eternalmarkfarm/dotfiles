@@ -56,10 +56,10 @@ vim.keymap.set("v", "<leader>d", '"_d', { silent = true })
 -- Вставить из системного clipboard (Ctrl+C/Ctrl+V)
 -- "+  = CLIPBOARD register
 -- p/P = вставить после/до курсора
-vim.keymap.set("n", "<leader>p", '"+p', { silent = true })
-vim.keymap.set("n", "<leader>P", '"+P', { silent = true })
-vim.keymap.set("v", "<leader>p", '"+p', { silent = true })
-vim.keymap.set("v", "<leader>P", '"+P', { silent = true })
+vim.keymap.set("n", "<leader>p", '"*p', { silent = true })
+vim.keymap.set("n", "<leader>P", '"*P', { silent = true })
+vim.keymap.set("v", "<leader>p", '"*p', { silent = true })
+vim.keymap.set("v", "<leader>P", '"*P', { silent = true })
 
 
 -- ===== lazy.nvim — менеджер плагинов =====
