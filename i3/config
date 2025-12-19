@@ -171,3 +171,13 @@ bindsym $mod+Ctrl+Right move workspace to output right
 
 # Переместить текущий workspace на монитор слева
 bindsym $mod+Ctrl+Left move workspace to output left
+
+bindsym Print exec --no-startup-id flameshot gui
+
+exec_always --no-startup-id flatpak run org.kde.CrowTranslate
+
+# GoldenDict-ng: не встраивать в тайлинг (иначе будет "соседнее окно")
+for_window [instance="^goldendict$" class="^GoldenDict-ng$"] floating enable, move position center, resize set 900 500
+
+# (опционально) попытаться не забирать фокус
+no_focus [instance="^goldendict$" class="^GoldenDict-ng$"]
