@@ -124,3 +124,15 @@ export GOOGLE_CLOUD_PROJECT="dogwood-reserve-466914-a3"
 alias NODEL='cd /mnt/data2/DRIVE/NODEL/60_BOOKS'
 alias PROGRAMMING='cd /mnt/data1/PROGRAMMING'
 export DEEPL_AUTH_KEY='71772241-1ae1-4639-aed8-097e1337a68f:fx'
+pxs() {
+  ALL_PROXY="socks5h://127.0.0.1:10808" \
+  http_proxy="socks5h://127.0.0.1:10808" \
+  https_proxy="socks5h://127.0.0.1:10808" \
+  "$@"
+}
+
+pxh() {
+  http_proxy="http://127.0.0.1:10809" \
+  https_proxy="http://127.0.0.1:10809" \
+  "$@"
+}
