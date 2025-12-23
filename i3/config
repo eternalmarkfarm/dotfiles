@@ -181,3 +181,9 @@ for_window [instance="^goldendict$" class="^GoldenDict-ng$"] floating enable, mo
 
 # (опционально) попытаться не забирать фокус
 no_focus [instance="^goldendict$" class="^GoldenDict-ng$"]
+
+
+bindcode --release $mod+Shift+40 exec --no-startup-id bash -lc '$HOME/.local/bin/deepl_ru_hotkey'
+bindsym $mod+Shift+Escape exec --no-startup-id dunstctl close-all
+exec_always --no-startup-id dunst
+

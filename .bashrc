@@ -121,3 +121,6 @@ export PATH="$HOME/.local/bin:$PATH"
 
 export GOOGLE_CLOUD_PROJECT="dogwood-reserve-466914-a3"
 
+alias NODEL='cd /mnt/data2/DRIVE/NODEL/60_BOOKS'
+alias PROGRAMMING='cd /mnt/data1/PROGRAMMING'
+export DEEPL_AUTH_KEY='71772241-1ae1-4639-aed8-097e1337a68f:fx'
