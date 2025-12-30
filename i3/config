@@ -1,7 +1,7 @@
-# Скопируйте и вставьте ВСЁ в nano (Ctrl+Shift+V или правой кнопкой)
 # i3 config file (v4)
 # Этот файл использует Win (Super) как модификатор!
 
+exec_always --no-startup-id xrdb -merge ~/.Xresources
 # Клавиша-модификатор (Win/Super = Mod4, Alt = Mod1)
 set $mod Mod4
 
@@ -16,7 +16,7 @@ set $urgent-bg-color #e53935
 font pango:DejaVu Sans Mono 10
 
 # Запуск терминала
-bindsym $mod+Return exec xterm -fs 16
+bindsym $mod+Return exec --no-startup-id xterm
 
 # Запуск dmenu (меню программ)
 bindsym $mod+d exec dmenu_run
@@ -105,10 +105,10 @@ bindsym $mod+Shift+0 move container to workspace number 10
 # Режим изменения размера
 mode "resize" {
     # Изменить размер
-    bindsym j resize shrink width 10 px or 10 ppt
-    bindsym k resize grow height 10 px or 10 ppt
-    bindsym l resize shrink height 10 px or 10 ppt
-    bindsym semicolon resize grow width 10 px or 10 ppt
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
     
     # Выйти из режима
     bindsym Return mode "default"
@@ -164,7 +164,6 @@ client.placeholder        #000000   #0c0c0c      #ffffff   #000000
 
 exec_always --no-startup-id copyq
 exec --no-startup-id pulseaudio --start
-exec --no-startup-id xrdb ~/.Xresources
 
 # Переместить текущий workspace на монитор справа
 bindsym $mod+Ctrl+Right move workspace to output right
@@ -186,4 +185,9 @@ no_focus [instance="^goldendict$" class="^GoldenDict-ng$"]
 bindcode --release $mod+Shift+40 exec --no-startup-id bash -lc '$HOME/.local/bin/deepl_ru_hotkey'
 bindsym $mod+Shift+Escape exec --no-startup-id dunstctl close-all
 exec_always --no-startup-id dunst
+
+exec_always --no-startup-id xkbset -accessx -sticky
+
+exec --no-startup-id autocutsel -fork
+exec --no-startup-id autocutsel -fork -selection PRIMARY
 
