@@ -1,9 +1,17 @@
 
 return {
   require("plugins.neotree"),
+  require("plugins.bufferline"),
+  require("plugins.telescope"),
+  require("plugins.toggleterm"),
   require("plugins.yarepl"),
   require("plugins.lsp"),
   require("plugins.cmp"),
+  require("plugins.treesitter"),
+  require("plugins.lualine"),
+  require("plugins.trouble"),
+  require("plugins.fugitive"),
+  require("plugins.which-key"),
 
 
   -- UI / theme

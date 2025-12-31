@@ -1,38 +1,66 @@
-
 return {
-  { "neovim/nvim-lspconfig" },
   {
     "williamboman/mason.nvim",
-    config = function() require("mason").setup() end,
+    config = function()
+      require("mason").setup()
+    end,
+  },
+
+  {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = { "williamboman/mason.nvim" },
+    opts = {
+      ensure_installed = { "lua_ls", "pyright", "clangd" },
+    },
   },
 
   {
     "neovim/nvim-lspconfig",
+    dependencies = {
+      "williamboman/mason-lspconfig.nvim",
+    },
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-      vim.api.nvim_create_autocmd("LspAttach", {
-        callback = function(args)
-          local bufnr = args.buf
-          local function bufmap(mode, lhs, rhs)
-            vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, silent = true })
-          end
+      -- Neovim 0.11+ style (recommended)
+      if vim.lsp.config and vim.lsp.enable then
+        vim.lsp.config("lua_ls", {
+          capabilities = capabilities,
+          settings = {
+            Lua = {
+              diagnostics = {
+                globals = { "vim" }, -- <-- fixes "Undefined global vim"
+              },
+              workspace = {
+                checkThirdParty = false,
+              },
+              telemetry = { enable = false },
+            },
+          },
+        })
 
-          bufmap("n", "gd", vim.lsp.buf.definition)
-          bufmap("n", "gD", vim.lsp.buf.declaration)
-          bufmap("n", "gi", vim.lsp.buf.implementation)
-          bufmap("n", "gr", vim.lsp.buf.references)
-          bufmap("n", "K", vim.lsp.buf.hover)
-          bufmap("n", "<leader>rn", vim.lsp.buf.rename)
-          bufmap("n", "<leader>ca", vim.lsp.buf.code_action)
-          bufmap("n", "[d", vim.diagnostic.goto_prev)
-          bufmap("n", "]d", vim.diagnostic.goto_next)
-        end,
-      })
+        vim.lsp.config("pyright", { capabilities = capabilities })
+        vim.lsp.config("clangd", { capabilities = capabilities })
 
-      vim.lsp.config("pyright", { capabilities = capabilities })
-      vim.lsp.config("clangd", { capabilities = capabilities })
-      vim.lsp.enable({ "pyright", "clangd" })
+        vim.lsp.enable({ "lua_ls", "pyright", "clangd" })
+      else
+        -- Older fallback
+        local lspconfig = require("lspconfig")
+
+        lspconfig.lua_ls.setup({
+          capabilities = capabilities,
+          settings = {
+            Lua = {
+              diagnostics = { globals = { "vim" } },
+              workspace = { checkThirdParty = false },
+              telemetry = { enable = false },
+            },
+          },
+        })
+
+        lspconfig.pyright.setup({ capabilities = capabilities })
+        lspconfig.clangd.setup({ capabilities = capabilities })
+      end
     end,
   },
 }

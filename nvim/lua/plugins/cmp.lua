@@ -1,4 +1,3 @@
-
 return {
   {
     "hrsh7th/nvim-cmp",
@@ -6,6 +5,11 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
+
+      -- cmdline completion
+      "hrsh7th/cmp-cmdline",
+
+      -- snippets
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
       "rafamadriz/friendly-snippets",
@@ -15,6 +19,7 @@ return {
       local luasnip = require("luasnip")
       require("luasnip.loaders.from_vscode").lazy_load()
 
+      -- normal completion (insert mode)
       cmp.setup({
         snippet = { expand = function(args) luasnip.lsp_expand(args.body) end },
         mapping = cmp.mapping.preset.insert({
@@ -37,6 +42,26 @@ return {
         sources = cmp.config.sources(
           { { name = "nvim_lsp" }, { name = "luasnip" } },
           { { name = "buffer" }, { name = "path" } }
+        ),
+      })
+
+      -- cmdline completion: search (/ and ?)
+      cmp.setup.cmdline({ "/", "?" }, {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = { { name = "buffer" } },
+      })
+
+      -- cmdline completion: commands (:)
+      cmp.setup.cmdline(":", {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources(
+          { { name = "path" } },
+          {
+            {
+              name = "cmdline",
+              option = { ignore_cmds = { "Man", "!" } },
+            },
+          }
         ),
       })
     end,

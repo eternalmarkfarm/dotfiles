@@ -3,6 +3,7 @@ local o = vim.opt
 
 o.number = true
 o.relativenumber = true
+o.autochdir = false
 
 o.tabstop = 4
 o.shiftwidth = 4
