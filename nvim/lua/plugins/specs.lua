@@ -12,6 +12,7 @@ return {
   require("plugins.trouble"),
   require("plugins.fugitive"),
   require("plugins.which-key"),
+  require("plugins.conform"),
 
 
   -- UI / theme

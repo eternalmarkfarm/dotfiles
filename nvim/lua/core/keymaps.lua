@@ -141,5 +141,6 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 map("n", "<leader>F", function()
+  require("lazy").load({ plugins = { "conform.nvim" } }) -- load plugin now
   require("conform").format({ async = true, lsp_format = "fallback" })
 end, { silent = true, desc = "Format file" })
