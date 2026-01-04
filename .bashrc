@@ -118,6 +118,8 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 export PATH="$HOME/.local/bin:$PATH"
+export EDITOR="$HOME/.local/bin/nvim"
+export VISUAL="$EDITOR"
 
 export GOOGLE_CLOUD_PROJECT="dogwood-reserve-466914-a3"
 
@@ -135,4 +137,18 @@ pxh() {
   http_proxy="http://127.0.0.1:10809" \
   https_proxy="http://127.0.0.1:10809" \
   "$@"
+}
+alias bat=batcat
+
+eval "$(zoxide init bash --cmd cd)"
+
+# Yazi cd used
+y() {
+  local tmp
+  tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    cd -- "$cwd" || return
+  fi
+  rm -f -- "$tmp"
 }

@@ -16,7 +16,7 @@ set $urgent-bg-color #e53935
 font pango:DejaVu Sans Mono 10
 
 # Запуск терминала
-bindsym $mod+Return exec --no-startup-id xterm
+bindsym $mod+Return exec --no-startup-id ~/.local/kitty.app/bin/kitty
 
 # Запуск dmenu (меню программ)
 bindsym $mod+d exec dmenu_run
@@ -138,7 +138,7 @@ exec --no-startup-id xsetroot -solid "#2f343f"
 #exec --no-startup-id i3status
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # Окна без заголовков
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border none
 
 # Цвета оформления
 #                          border   background   text     indicator

@@ -8,6 +8,15 @@ map("n", "<leader>h", ":nohlsearch<CR>", opts)
 map("n", "<leader>i", "i <Esc>h", { desc = "Add 1 space after cursor (stay Normal)" })
 
 
+-- Insert-mode cursor movement with Ctrl + hjkl
+
+map("i", "<C-h>", "<Left>", opts)
+map("i", "<C-j>", "<Down>", opts)
+map("i", "<C-k>", "<Up>", opts)
+map("i", "<C-l>", "<Right>", opts)
+
+
+
 -- Blank lines without staying in Insert
 map("n", "<leader>o", "o<Esc>", { desc = "Add blank line below (stay Normal)" })
 map("n", "<leader>O", "O<Esc>", { desc = "Add blank line above (stay Normal)" })
